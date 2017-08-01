@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 ApplicationData data = (ApplicationData) getApplication();
                 boolean isPlaying = data.isPlaying();
                 if (!isPlaying) {
-                    data.setPlaying(true);Log.i(TAG,"Play");
+                    data.setPlaying(true);
+                    Log.i(TAG,"Play");
                     Toast.makeText(MainActivity.this, "PLAY", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MusicService.class);
                     intent.putExtra(DATA, arrMusicMain.get(position).getData());

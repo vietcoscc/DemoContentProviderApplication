@@ -7,14 +7,7 @@ import android.provider.MediaStore;
  */
 
 public class Music {
-    //    MediaStore.Audio.Media.TITLE;
-//    MediaStore.Audio.Media.DISPLAY_NAME;
-//    MediaStore.Audio.Media.MIME_TYPE;
-//    MediaStore.Audio.Media.ALBUM;
-//    MediaStore.Audio.Media.ARTIST;
-//    MediaStore.Audio.Media.DURATION;
-//    MediaStore.Audio.Media.YEAR;
-//    MediaStore.Audio.Media.DATA;
+
     String title;
     String displayName;
     String mimeType;

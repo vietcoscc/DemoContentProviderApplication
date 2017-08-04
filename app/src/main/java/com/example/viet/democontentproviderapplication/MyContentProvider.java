@@ -42,6 +42,10 @@ public class MyContentProvider implements LoaderManager.LoaderCallbacks<Cursor> 
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data.getCount() == 0) {
+            Toast.makeText(context, "No row found", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Toast.makeText(context, data.getCount() + "", Toast.LENGTH_SHORT).show();
         ArrayList<Music> arrMusic = new ArrayList<>();
         data.moveToFirst();

@@ -7,13 +7,13 @@ import android.app.Application;
  */
 
 public class ApplicationData extends Application {
-    private boolean isPlaying = false;
+    private boolean mIsPlaying = false;
 
-    public boolean isPlaying() {
-        return isPlaying;
+    public boolean ismIsPlaying() {
+        return mIsPlaying;
     }
 
-    public void setPlaying(boolean playing) {
-        isPlaying = playing;
+    public void setmIsPlaying(boolean mIsPlaying) {
+        this.mIsPlaying = mIsPlaying;
     }
 }

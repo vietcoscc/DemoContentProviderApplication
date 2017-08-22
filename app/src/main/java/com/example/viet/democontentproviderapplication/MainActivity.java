@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 ApplicationData data = (ApplicationData) getApplication();
-                boolean isPlaying = data.isPlaying();
+                boolean isPlaying = data.ismIsPlaying();
                 if (!isPlaying) {
-                    data.setPlaying(true);
+                    data.setmIsPlaying(true);
                     Log.i(TAG,"Play");
                     Toast.makeText(MainActivity.this, "PLAY", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MusicService.class);
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setAction(ACTION_PLAY);
                     startService(intent);
                 } else {
-                    data.setPlaying(false);
+                    data.setmIsPlaying(false);
                     Log.i(TAG,"Stop");
                     Toast.makeText(MainActivity.this, "STOP", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MusicService.class);

@@ -4,16 +4,11 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
-import android.provider.SyncStateContract;
-import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
-import android.widget.Toast;
 
 import static com.example.viet.democontentproviderapplication.MainActivity.DATA;
 
@@ -28,7 +23,7 @@ public class MusicService extends Service {
     public static final String ACTION_PREVIOUS = "action previous";
     public static final String ACTION_STOP = "action stop";
     private static final String TAG = "MusicService";
-    private MediaPlayer player;
+    private MediaPlayer mPlayer;
 
     @Nullable
     @Override
@@ -42,22 +37,22 @@ public class MusicService extends Service {
         String action = intent.getAction();
         switch (action) {
             case ACTION_PLAY:
-                if (player != null && player.isPlaying()) {
-                    player.stop();
+                if (mPlayer != null && mPlayer.isPlaying()) {
+                    mPlayer.stop();
                     ApplicationData data = (ApplicationData) getApplication();
-                    data.setPlaying(false);
+                    data.setmIsPlaying(false);
                     return START_STICKY;
                 }
                 buildNotificaiton();
-                player = MediaPlayer.create(this, Uri.parse(intent.getStringExtra(DATA)));
-                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                mPlayer = MediaPlayer.create(this, Uri.parse(intent.getStringExtra(DATA)));
+                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         ApplicationData data = (ApplicationData) getApplication();
-                        data.setPlaying(false);
+                        data.setmIsPlaying(false);
                     }
                 });
-                player.start();
+                mPlayer.start();
                 break;
             case ACTION_PAUSE:
                 //TODO:
@@ -69,7 +64,7 @@ public class MusicService extends Service {
                 //TODO:
                 break;
             case ACTION_STOP:
-                player.stop();
+                mPlayer.stop();
                 stopForeground(true);
                 stopSelf();
                 break;

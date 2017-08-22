@@ -1,6 +1,5 @@
 package com.example.viet.democontentproviderapplication;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -21,32 +19,32 @@ import java.util.ArrayList;
 
 public class MyContentProvider implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "MyContentProvider";
-    private Context context;
-    private CursorLoader cursorLoader;
+    private Context mContext;
+    private CursorLoader mCursorLoader;
 
     public MyContentProvider(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public void initLoader() {
-        AppCompatActivity compatActivity = (AppCompatActivity) context;
+        AppCompatActivity compatActivity = (AppCompatActivity) mContext;
         compatActivity.getSupportLoaderManager().initLoader(1, null, this);
 
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        cursorLoader = new CursorLoader(context, MediaStore.Audio.Media.INTERNAL_CONTENT_URI, null, null, null, null);
-        return cursorLoader;
+        mCursorLoader = new CursorLoader(mContext, MediaStore.Audio.Media.INTERNAL_CONTENT_URI, null, null, null, null);
+        return mCursorLoader;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data.getCount() == 0) {
-            Toast.makeText(context, "No row found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "No row found", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(context, data.getCount() + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, data.getCount() + "", Toast.LENGTH_SHORT).show();
         ArrayList<Music> arrMusic = new ArrayList<>();
         data.moveToFirst();
         while (!data.isAfterLast()) {

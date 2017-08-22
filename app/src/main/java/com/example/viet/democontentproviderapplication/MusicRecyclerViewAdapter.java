@@ -16,10 +16,10 @@ import butterknife.ButterKnife;
  */
 
 public class MusicRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<Music> arrMusic;
+    private ArrayList<Music> mArrMusic;
 
     public MusicRecyclerViewAdapter(ArrayList<Music> arrMusic) {
-        this.arrMusic = arrMusic;
+        this.mArrMusic = arrMusic;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class MusicRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MusicViewHolder musicViewHolder = (MusicViewHolder) holder;
-        Music music = arrMusic.get(position);
+        Music music = mArrMusic.get(position);
         musicViewHolder.tvTitle.setText(music.getTitle() + " ");
         musicViewHolder.tvDisplayName.setText(music.getDisplayName() + " ");
         musicViewHolder.tvAlbum.setText(music.getAlbum() + " ");
@@ -42,7 +42,7 @@ public class MusicRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
-        return arrMusic.size();
+        return mArrMusic.size();
     }
 
     class MusicViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
